@@ -11,17 +11,17 @@
 </table>
 </div>
 
-<p>
-<b>Jules Kouatchou</b>
+<p align="center">
+<b>Jules Kouatchou</b> <br />
 NASA/GSFC - SSAI <br />
 Code 606 <br />
 Greenbelt, MD 20771 <br />
 Jules.Kouatchou@nasa.gov
 </p>
 
-<p>
-<b>Cindy Chen</b>
-Acton Boxborough Regional High School <br />
+<p align="center">
+<b>Cindy Chen</b> <br \>
+Acton Boxborough Regional High School <br \>
 36 Charter Rd, Acton, MA 01720 <br />
 cinderellazhouchen@gmail.com 
 </p>
@@ -34,15 +34,62 @@ The ISS cycles the globe every 90 minutes.
 We write a Python application 
 (relying on the packages Pandas, Shapely, GeoPandas and MovingPandas) 
 that collects a time series (over several hours) of the positions of the ISS, 
-identifies the cycles (each time the ISS crosses the central meridian), 
+identifies the cycles (each time the ISS crosses the longitude 180 degree), 
 and plots the tracks. 
 We also determine the weather current conditions (temperature, wind speed) 
 of each land point along the track and perform interactive visualizations.
 </p>
 
+[Website](https://github.com/astg606/pycon/tree/main/year2024/poster) •  [Contact Us](mailto:Jules.Kouatchou@nasa.gov)
+
+
 ## Introduction
 
+There are many web pages that show the position of ISS. 
+We can mention for instance:
+
+- [Spot the Station](https://spotthestation.nasa.gov/): A NASA webpage that displays a live ISS tracking map and provides information on how watch ISS pass overhead at any world city.
+- [Where is the International Space Station?](https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/International_Space_Station/Where_is_the_International_Space_Station): A European Space Agency (ESA) tracker that shows where ISS is right now and its path 90 minutes ago and 90 minutes ahead.  
+- [Current position of the ISS](https://www.astroviewer.net/iss/en/): Provide the current  the view from the ISS directly down to earth and the ground track of the ISS's next orbit.
+- [Real-Time ISS Tracker Map](https://isstracker.pl/en): Show an interactive map of the world with the current ISS position and its future path.
+- [ISS Tracker 3D - International Space Station - REAL TIME TRACKING](https://www.satflare.com/track.asp?q=25544#TOP): Provide interactive maps for the current position and future ISS orbit.
+
+
 ## How the time series data was generated
+
+The webpage:
+
+<p align="center">
+<a href="http://api.open-notify.org/iss-now.json">http://api.open-notify.org/iss-now.json</a>
+</p>
+
+provides basic information (in `JSON` format) on ISS: current time (in timestamp format) and location (latitude and longitude). 
+We wrote a script that web scraps the page (every five seconds) to obtain the information.
+For each position (with the corresponding time), it determines if it is a land or not (ocean),
+the country name of the location, and the current weather conditions (temperature, wind speed).
+The timeseries data 
+(date/time, latitude, longitude, temperature, wind speed, country name) 
+was stored in Pandas DataFrame and then saved in a CSV file for a future analysis.
+Each iteration of the data collection can be summarized in the steps:
+
+1. Access the webpage
+2. Grab the content of the webpage
+3. Parse the content to extract the current timestamp, the latitude and longitude
+4. Convert the timestamp into a datetime object
+5. Detemine if the location is a land or not (true or false)
+6. Perform web scraping to get the current (forecast) temperature and wind speed at the location
+7. Determine the country name of the location
+8. Use the previous and current locations to determine if ISS crossed the longitude 180. This is needed to identify individual ISS tracks (a track is each time ISS goes from -180 to 180 degree).
+7. Store the data (time, latitude, longitude, land flag, temperature, wind speed, track identifier, country) as a row of a `pandas` DataFrame.
+    
+The following Python packages were required to perform the above tasks: 
+
+- [requests](https://requests.readthedocs.io/en/latest/): To access a webage and extract its content.
+- [json](https://docs.python.org/3/library/json.html): To parse the content (in JSON format) of a webpage.
+- [datetime](https://docs.python.org/3/library/datetime.html): To convert the timestamp into a datetime object.
+- [global-land-mask](https://pypi.org/project/global-land-mask/): To determine if a given location is a land or not.
+- [reverse_geocode](https://pypi.org/project/reverse_geocoder/): To determine the country of a location.
+- [pandas](https://pandas.pydata.org/): To store the timeseries data into a DataFrame.
 
 ## Processing the data
 
@@ -76,7 +123,7 @@ of each land point along the track and perform interactive visualizations.
 The code we use to generate the time series dataset is available at:
 
 <p align="center">
-<a https="https://github.com/astg606/pycon/tree/main/year2024/poster">LINK TO CODE</a>
+<a href="https://github.com/astg606/pycon/tree/main/year2024/poster">LINK TO CODE</a>
 </p>
 
 <details>
