@@ -76,11 +76,12 @@ of each land point along the track and perform interactive visualizations.
 The code we use to generate the time series dataset is available at:
 
 <p align="center">
-<a html="">LINK TO CODE</a>
+<a https="https://github.com/astg606/pycon/tree/main/year2024/poster">LINK TO CODE</a>
 </p>
 
 <details>
-<summary>"Click here to view the code"</summary>
+<summary>Click here to view the code</summary>
+
 ```python
 import time
 import math
@@ -301,6 +302,7 @@ if __name__ == '__main__':
 
     num_records = 2000
     track_iss(num_records)
+
 ```
 </details>
 
