@@ -45,6 +45,27 @@ of each land point along the track and perform interactive visualizations.
 
 ## Introduction
 
+The [International Space Station (ISS)](https://www.nasa.gov/international-space-station/) 
+s a permanently crewed on-orbit laboratory that enables scientific research supporting innovation on Earth and future deep space exploration.
+An international partnership of space agencies provides and operates the elements of the ISS. 
+The principals are the space agencies of the United States, Russia, Europe, Japan, and Canada. 
+The ISS Program brings together international flight crews, multiple launch vehicles, globally distributed launch, operations, training, engineering, and development facilities; communications networks, and the international scientific research community.
+The ISS has been humanity’s platform to learn about living in space, as well as observing the Earth and performing research that has benefited us here on Earth.
+Though it first module was initially put in orbit in November 1998, it has been continuously occupied by astronauts since November 2000.
+
+The ISS maintains an orbit with an average altitude of 400 kilometres (250 mi).
+In 24 hours, the space station makes 16 orbits of Earth, traveling through 16 sunrises and sunsets.
+It travels at a speed of five miles per second, circling Earth about every 90 minutes, that is 
+ an equivalent distance to the Moon and back in about a day.
+
+
+At any given time, we can determine the exact location (in terms of latitude and longitude) of ISS.
+It is even possible to determine its future locations.
+In 2012 NASA launched its `"Spot the Station"` service, which sends people text and email alerts when the station is due to fly above their town. 
+Because the station’s orbital path takes it over 90 percent of the Earth’s population, 
+the service allows most people of Earth to see above them the station.
+
+
 There are many web pages that show the position of ISS. 
 We can mention for instance:
 
@@ -99,6 +120,11 @@ The following Python packages were required to perform the above tasks:
 
 
 ## References
+
+- [REFERENCE GUIDE TO THE INTERNATIONAL SPACE STATION](https://www.nasa.gov/wp-content/uploads/2017/09/np-2015-05-022-jsc-iss-guide-2015-update-111015-508c.pdf?emrc=59b06a) from NASA.
+- [ISS National Laboratory](https://www.issnationallab.org/) from the Center for the Advancement of Science in Space.
+- [International Space Station](https://en.wikipedia.org/wiki/International_Space_Station) from Wikipedia.
+- [International Space Station](https://www.boeing.com/space/international-space-station) from Boeing.
 
 ## Appendix
 
