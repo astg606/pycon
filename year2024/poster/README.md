@@ -126,6 +126,10 @@ The following Python packages were required to perform the above tasks:
 
 ## Processing the data and Visualization
 
+In the previous section, we describe how to generate timeseries data saved in a CSV file.
+The file, organized in columns, has data points (rows) representing 
+`date/time`, `latitude`, `longitude,` `temperature`, `wind speed`, and `country name`.
+We use the Pandas `read_csv` function to read the file and obtain a DataFrame.
 
 
 ## Conclusion and Future Work
