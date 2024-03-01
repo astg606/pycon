@@ -110,7 +110,7 @@ Each iteration of the data collection can be summarized in the steps:
 3. Parse the content to extract the current timestamp, the latitude and longitude
 4. Convert the timestamp into a datetime object
 5. Detemine if the location is a land or not (true or false)
-6. Perform web scraping to get the current (forecast) temperature and wind speed at the location
+6. Perform web scraping to get the current (forecast) temperature and wind speed at the location. We scrap the [https://api.open-meteo.com/v1/forecast](https://api.open-meteo.com/v1/forecast) portal to obtain the desire information.
 7. Determine the country name of the location
 8. Use the previous and current locations to determine if ISS crossed the longitude 180. This is needed to identify individual ISS tracks (a track is each time ISS goes from -180 to 180 degree).
 7. Store the data (time, latitude, longitude, land flag, temperature, wind speed, track identifier, country) as a row of a `pandas` DataFrame.
