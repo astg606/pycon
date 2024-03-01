@@ -46,7 +46,7 @@ of each land point along the track and perform interactive visualizations.
 ## Introduction
 
 The [International Space Station (ISS)](https://www.nasa.gov/international-space-station/) 
-s a permanently crewed on-orbit laboratory that enables scientific research supporting innovation on Earth and future deep space exploration.
+is a permanently crewed on-orbit laboratory that enables scientific research supporting innovation on Earth and future deep space exploration.
 An international partnership of space agencies provides and operates the elements of the ISS. 
 The principals are the space agencies of the United States, Russia, Europe, Japan, and Canada. 
 The ISS Program brings together international flight crews, multiple launch vehicles, globally distributed launch, operations, training, engineering, and development facilities; communications networks, and the international scientific research community.
@@ -57,13 +57,14 @@ The ISS maintains an orbit with an average altitude of 400 kilometres (250 mi).
 In 24 hours, the space station makes 16 orbits of Earth, traveling through 16 sunrises and sunsets.
 It travels at a speed of five miles per second, circling Earth about every 90 minutes, that is 
  an equivalent distance to the Moon and back in about a day.
+ ISS passes over places between latitudes 52 degrees north and 52 degrees south at different times of the day. 
 
 
 At any given time, we can determine the exact location (in terms of latitude and longitude) of ISS.
 It is even possible to determine its future locations.
 In 2012 NASA launched its `"Spot the Station"` service, which sends people text and email alerts when the station is due to fly above their town. 
 Because the station’s orbital path takes it over 90 percent of the Earth’s population, 
-the service allows most people of Earth to see above them the station.
+the service allows most people of Earth to see above them the station. 
 
 
 There are many web pages that show the position of ISS. 
@@ -74,6 +75,17 @@ We can mention for instance:
 - [Current position of the ISS](https://www.astroviewer.net/iss/en/): Provide the current  the view from the ISS directly down to earth and the ground track of the ISS's next orbit.
 - [Real-Time ISS Tracker Map](https://isstracker.pl/en): Show an interactive map of the world with the current ISS position and its future path.
 - [ISS Tracker 3D - International Space Station - REAL TIME TRACKING](https://www.satflare.com/track.asp?q=25544#TOP): Provide interactive maps for the current position and future ISS orbit.
+
+
+The space station carries a variety of automated sensors and facilities, 
+Many of the instruments collect data about the global climate, environmental change, and natural hazards.
+The instruments are important to study phenomenas like heat islands, 
+to track concentrated atmospheric particles and water vapor belched into the stratosphere, 
+or to determine the type and distribution of minerals in the dust of Earth’s arid regions. 
+For instance, the ECOsystem Spaceborne Thermal Radiometer Experiment (ECOSTRESS) takes high-resolution 
+thermal infrared measurements of the temperature of the ground.
+We can also mention the Stratospheric Aerosol and Gas Experiment (SAGE III-ISS) that measures gases and tiny particles in the atmosphere that play significant roles in atmospheric processes.
+
 
 
 ## How the time series data was generated
@@ -112,11 +124,11 @@ The following Python packages were required to perform the above tasks:
 - [reverse_geocode](https://pypi.org/project/reverse_geocoder/): To determine the country of a location.
 - [pandas](https://pandas.pydata.org/): To store the timeseries data into a DataFrame.
 
-## Processing the data
+## Processing the data and Visualization
 
-## Future work
 
-## Conclusion
+
+## Conclusion and Future Work
 
 
 ## References
@@ -125,6 +137,8 @@ The following Python packages were required to perform the above tasks:
 - [ISS National Laboratory](https://www.issnationallab.org/) from the Center for the Advancement of Science in Space.
 - [International Space Station](https://en.wikipedia.org/wiki/International_Space_Station) from Wikipedia.
 - [International Space Station](https://www.boeing.com/space/international-space-station) from Boeing.
+- [The ECOsystem Spaceborne Thermal Radiometer Experiment](https://www.jpl.nasa.gov/missions/ecosystem-spaceborne-thermal-radiometer-experiment-on-space-station-ecostress)
+- [About SAGE III on ISS](https://sage.nasa.gov/missions/about-sage-iii-on-iss/)
 
 ## Appendix
 
