@@ -131,21 +131,13 @@ The file, organized in columns, has data points (rows) representing
 `date/time`, `latitude`, `longitude,` `temperature`, `wind speed`, and `country name`.
 We use the Pandas `read_csv` function to read the file and obtain a DataFrame.
 
-<div style="width:60px ; height:60px">
 ![fig_nocountries1](fig_iss_paths_no_countries.png "ISS paths")
-<div>
 
-<div style="width:60px ; height:60px">
 ![fig_nocountries2](fig_iss_paths_no_countries_2.png "Identifiable ISS paths")
-<div>
 
-<div style="width:60px ; height:60px">
 ![fig_allcountries2](fig_iss_paths_all_countries_2.png "Identifiable ISS paths with overpassed countries")
-<div>
 
-<div style="width:60px ; height:60px">
 ![fig_static](fig_iss_paths_temperature_static.png "Temperature values along a path")
-<div>
 
 ## Conclusion and Future Work
 
