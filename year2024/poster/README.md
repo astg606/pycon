@@ -139,6 +139,8 @@ We use the Pandas `read_csv` function to read the file and obtain a DataFrame.
 
 ![fig_static](fig_iss_paths_temperature_static.png "Temperature values along a path")
 
+![fig_interactive](fig_iss_paths_fields_interactive.html "Fields' values along a path")
+
 ## Conclusion and Future Work
 
 
