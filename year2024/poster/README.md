@@ -124,91 +124,72 @@ The following Python packages were required to perform the above tasks:
 - [reverse_geocode](https://pypi.org/project/reverse_geocoder/): To determine the country of a location.
 - [pandas](https://pandas.pydata.org/): To store the timeseries data into a DataFrame.
 
-## Processing the data and Visualization
+## Processing the Data and Visualization
 
-In the previous section, we describe how to generate timeseries data saved in a CSV file.
+In the previous section, we described how to generate timeseries data 
+and saved it in a CSV file.
 The file, organized in columns, has data points (rows) representing 
 `date/time`, `latitude`, `longitude,` `temperature`, `wind speed`, and `country name`.
-We use the Pandas `read_csv` function to read the file and obtain a DataFrame.
 
-![fig_nocountries1](fig_iss_paths_no_countries.png "ISS paths")
+#### Step 1
+We use the Pandas `read_csv` function to read the CSV file and 
+obtain a DataFrame, named `iss_df`.
+After that, we perform various conversions to 
+- Transform the time values from strings to datetime objects, 
+- Create a new column (`geometry`) to transform the latitude/longitude
+  pairs into Shapely geometry Points.
 
-![fig_nocountries2](fig_iss_paths_no_countries_2.png "Identifiable ISS paths")
+#### Step 2
 
-![fig_allcountries2](fig_iss_paths_all_countries_2.png "Identifiable ISS paths with overpassed countries")
+We take the previously created Pandas DataFrame to create (with GeoPandas)
+a GeoDataFrame (`iss_gdf`). 
+With `iss_gdf`, we can plot the different ISS orbits over a world map.
 
-![fig_static](fig_iss_paths_temperature_static.png "Temperature values along a path")
+> [!NOTE]  
+> Here we have a new orbit any time the ISS crosses the International Date Line (180th meridian).
 
-![fig_interactive](fig_iss_paths_fields_interactive.html "Fields' values along a path")
+![fig_nocountries1](images/fig_iss_paths_no_countries.png "ISS paths")
+
+The figure above shows the trajectoy of ISS over time.
+It is not easy to identify the individual orbits, the direction of ISS
+(left to right or right to left), the global starting and ending positions.
+The GeoDataFrame has a column that distinguishes the orbits.
+If we regroup data points by orbit and redo a similar plot, we will have
+the figure below.
+
+![fig_nocountries2](images/fig_iss_paths_no_countries_2.png "Identifiable ISS paths")
+
+This new plot helps us to see the different orbits but many questions remained.
+
+#### Step 3
+
+`iss_gdf` is used to create two distint GeoDataFrames: 
+`iss_gdf_land` (for location over land) and 
+`iss_gdf_ocean` (for locations over the ocean).
+The two new GeoDataFrames allow us to identify the different countries
+ISS overpassed. 
+We added a tool that provide the name of the countries ISS flew over.
+We use the information to create the figure below:
 
 
-<svg fill="none" viewBox="0 0 600 300" width="600" height="300" xmlns="http://www.w3.org/2000/svg">
-  <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <style>
-        @keyframes hi  {
-            0% { transform: rotate( 0.0deg) }
-           10% { transform: rotate(14.0deg) }
-           20% { transform: rotate(-8.0deg) }
-           30% { transform: rotate(14.0deg) }
-           40% { transform: rotate(-4.0deg) }
-           50% { transform: rotate(10.0deg) }
-           60% { transform: rotate( 0.0deg) }
-          100% { transform: rotate( 0.0deg) }
-        }
+![fig_allcountries2](images/fig_iss_paths_all_countries_2.png "Identifiable ISS paths with overpassed countries")
 
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
+We were able to only focus on the overpassed countries by 
+coloring them, writing their names, uniquely coloring the ISS paths.
 
-        .container {
-          background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-          background-size: 400% 400%;
-          animation: gradient 15s ease infinite;
+### Step 4
 
-          width: 100%;
-          height: 300px;
+We use MovingPandas `TrajectoryCollection` function to convert `iss_df` into a 
+trajectory object named `iss_traj`.
+Now we can obatian additional information on the orbit as shown in the figure below where we can see the ISS movement direction.
 
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          color: white;
+![fig_orbits](images/fig_iss_paths_orbit_interactive.png)
 
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        }
 
-        .hi {
-          animation: hi 1.5s linear -0.5s infinite;
-          display: inline-block;
-          transform-origin: 70% 70%;
-        }
+![fig_static](images/fig_iss_paths_temperature_static.png "Temperature values along a path")
 
-        @media (prefers-reduced-motion) {
-          .container {
-            animation: none;
-          }
+![fig_interactive](images/fig_iss_paths_fields_interactive.html "Fields' values along a path")
 
-          .hi {
-            animation: none;
-          }
-        }
-      </style>
-
-      <div class="container">
-        <h1>Hi there, my name is Nikola <div class="hi">👋</div></h1>
-        <a href="fig_iss_paths_fields_interactive.html">Interactive Map</a>
-      </div>
-    </div>
-  </foreignObject>
-</svg>
 
 ## Conclusion and Future Work
 
