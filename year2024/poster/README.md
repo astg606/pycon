@@ -179,19 +179,35 @@ coloring them, writing their names, uniquely coloring the ISS paths.
 
 ### Step 4
 
-We use MovingPandas `TrajectoryCollection` function to convert `iss_df` into a 
+We use the MovingPandas `TrajectoryCollection` function to convert `iss_df` into a 
 trajectory object named `iss_traj`.
-Now we can obatian additional information on the orbit as shown in the figure below where we can see the ISS movement direction.
+Now we can obtain additional information on the orbits as shown in the figure below where we can see the direction of each.
 
 ![fig_orbits](images/fig_iss_paths_orbit_interactive.png)
 
+Our goal was also to include the values of weather related values along
+the ISS paths.
+We particularly plot the temperature field along one orbit in the figure below. 
 
 ![fig_static](images/fig_iss_paths_temperature_static.png "Temperature values along a path")
+
+
+Finally, we create interactive plots where the weather data can be obtained at any location
+along an ISS path.
 
 ![fig_interactive](images/fig_iss_paths_fields_interactive.html "Fields' values along a path")
 
 
 ## Conclusion and Future Work
+
+In this project, we were able to use web scraping to collect a timeseries
+of the locations of the International Space Station (ISS) together with
+weather data. 
+We plotted the different ISS orbits, identified the countries ISS flew over,
+and displayed the weather data on maps (static and interactive).
+ISS orbits are known in advance. It will be interesting to apply what we
+did in this project using future locations of ISS to create interactive 
+and dynamic maps.
 
 
 ## References
