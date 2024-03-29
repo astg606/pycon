@@ -2,14 +2,18 @@
 <div align="center">
 <table>
 <tbody>
+ <tr>
     <td><img src="https://portal.nccs.nasa.gov/datashare/astg/training/python/logos/nasa-logo.svg" width="100"/> </td>
      <td><img src="https://portal.nccs.nasa.gov/datashare/astg/training/python/logos/ASTG_logo.png?raw=true" width="80"/> </td>
      <td> <img src="https://www.nccs.nasa.gov/sites/default/files/NCCS_Logo_0.png" width="130"/> </td>
+ </tr>
+ <tr>
 <td align="center">
 <img width="2000" height="0"><br>
 <h2>Python Tool for Tracking the Movement of the International Space Station and Identifying the Weather Condition along the Track</h2>
 <img width="2000" height="0">
 </td>
+ </tr>
 </tbody>
 </table>
 </div>
