@@ -1,5 +1,25 @@
-# PyCon 2024 Tutorial
-## Python Workflows to Extract and Plot Satellite Data Products along Tracks 
+
+<div align="center">
+<table>
+<tbody>
+ <tr>
+    <td>
+       <img src="https://portal.nccs.nasa.gov/datashare/astg/training/python/logos/nasa-logo.svg" width="100" hspace="90">
+       <img src="https://portal.nccs.nasa.gov/datashare/astg/training/python/logos/ASTG_logo.png?raw=true" width="80" hspace="130">
+        <img src="https://www.nccs.nasa.gov/sites/default/files/NCCS_Logo_0.png" width="130">
+    </td>
+ </tr>
+ <tr>
+<td align="center">
+<img width="2000" height="0"><br>
+<h1> PyCon 2024 Tutorial </h1>
+<h2>Python Workflows to Extract and Plot Satellite Data Products along Tracks</h2>
+<img width="2000" height="0">
+</td>
+ </tr>
+</tbody>
+</table>
+</div>
 
 
 The purpose of this tutorial is to help participants to write Python workflows 
@@ -25,8 +45,9 @@ time series data and plot I along the satellite path.
    - Perform analyses and visualizations
 5. Break (10 minutes)
 6. Exercises (40 minutes) 
-   - Option 1: Movement of the International Space Station (ISS)
-   - Option 2: Movemnet of the Aura satellite
+   - Option 1: Movement of the Aura satellite
+   - Option 2: Movement of the International Space Station (ISS)
+   - Option 3: Tracking the April 8, 2024 solar eclipse over the US.
 7. Wrapping Up (10 minutes)
 
 
@@ -46,13 +67,21 @@ compare data from other sources (model outputs or other satellite products).
 - Anyone familiar with the Python programming language and with a basic knowledge of NumPy.
 
 ### Training platform 
-Each participant will be given access of a self-contained cloud platform:
+Each participant will be given access of a self-contained cloud platform, the
+NASA Center for Climate Simulation (NCCS) Science Managed Cloud Environment (SMCE):
 
-NASA Center for Climate Simulation (NCCS) [Science Managed Cloud Environment](https://training.astg.smce.nasa.gov) (SMCE)
+<p align="center">
+<a href="https://training.astg.smce.nasa.gov">https://training.astg.smce.nasa.gov</a>
+</p>
 
-The platform will have the necessary Jupyter notebook and satellitedata products (participant may choose to download the data themselves).
+The platform will have the necessary Jupyter notebooks and satellite data products 
+(participant may choose to download the data themselves).
 
-To give you access to the SMCE, we need your Gmail userid (whatever email address you use to connect to your Gmail account).  Please fill out (if you did not do it in the past few week) the Google form at the link below:
+To give you access to the SMCE, we need your Gmail userid (whatever email address you use to access your Gmail account).  Please fill out the Google form at the link below:
+
+<p align="center">
+<a href="https://forms.gle/ezfr4Q61RwmqmNsDA">https://forms.gle/ezfr4Q61RwmqmNsDA</a>
+</p>
 
 You are expected to write something like:
  

@@ -62,7 +62,7 @@ The ISS Program brings together international flight crews, multiple launch vehi
 The ISS has been humanity’s platform to learn about living in space, as well as observing the Earth and performing research that has benefited us here on Earth.
 Though it first module was initially put in orbit in November 1998, it has been continuously occupied by astronauts since November 2000.
 
-The ISS maintains an orbit with an average altitude of 400 kilometres (250 mi).
+The ISS maintains an orbit with an average altitude of 400 kilometers (250 mi).
 In 24 hours, the space station makes 16 orbits of Earth, traveling through 16 sunrises and sunsets.
 It travels at a speed of five miles per second, circling Earth about every 90 minutes, that is 
  an equivalent distance to the Moon and back in about a day.
