@@ -194,6 +194,8 @@ Now we can obtain additional information on the orbits as shown in the figure be
 
 ![fig_orbits](images/fig_iss_paths_orbit_interactive.png)
 
+The interactive features of the same map are available at: [interactive_map_orbits](https://astg606.github.io/pycon/).
+
 Our goal was also to include the values of weather related values along
 the ISS paths.
 We particularly plot the temperature field along one orbit in the figure below. 
@@ -202,7 +204,7 @@ We particularly plot the temperature field along one orbit in the figure below.
 
 
 Finally, we create interactive plots where the weather data can be obtained at any location
-along an ISS path: [interactive_map](https://astg606.github.io/pycon/).
+along an ISS path: [interactive_map_fields](https://astg606.github.io/pycon/).
 
 
 <!---
