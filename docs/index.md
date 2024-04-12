@@ -1,3 +1,3 @@
-#### Interactive map
+#### Interactive map for ISS
 
-[fig_interactive](https://astg606.github.io/pycon/fig_iss_paths_fields_interactive.html "Fields' values along a path")
+[Field values along an orbit of ISS](https://astg606.github.io/pycon/fig_iss_paths_fields_interactive.html")
