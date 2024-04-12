@@ -204,9 +204,8 @@ We particularly plot the temperature field along one orbit in the figure below.
 Finally, we create interactive plots where the weather data can be obtained at any location
 along an ISS path.
 
-{% include_relative images/fig_iss_paths_fields_interactive.html %} 
 
-![fig_interactive](images/fig_iss_paths_fields_interactive.html "Fields' values along a path")
+![fig_interactive](https://github.com/astg606/pycon/fig_iss_paths_fields_interactive.html "Fields' values along a path")
 
 
 ## Conclusion and Future Work
