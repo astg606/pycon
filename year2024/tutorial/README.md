@@ -95,9 +95,9 @@ Note that you first and last names should match the ones you used for registerin
 
 The following packages will be used:
 
-- __h5py__:
-- __Pandas__:
-- __Shapely__:
-- __GeoPandas__:
-- __MovingPandas__:
+- __h5py__: Reading HDF5 files
+- __Pandas__: Manipulation and exploratory data analysis of tabular data.
+- __Shapely__: For manipulation and analysis of planar geometric objects
+- __GeoPandas__: Combines the capabilities of Pandas and Shapely for geospatial operations
+- __MovingPandas__: Handling the movement of geospatial objects.
 
