@@ -45,9 +45,9 @@ time series data and plot I along the satellite path.
    - Perform analyses and visualizations
 5. Break (10 minutes)
 6. Exercises (40 minutes) 
-   - Option 1: Movement of the Aura satellite
-   - Option 2: Movement of the International Space Station (ISS)
-   - Option 3: Tracking the April 8, 2024 solar eclipse over the US.
+   - __Option 1__: Tracking the April 8, 2024 solar eclipse over the US.
+   - __Option 2__: Movement of the International Space Station (ISS)
+   - __Option 3__: Movement of the Aura satellite
 7. Wrapping Up (10 minutes)
 
 
@@ -58,12 +58,12 @@ They will have pointers to write basic tools to read (using netCDF4, h5py, etc.)
 satellite data files, create GeoDataFrames containing the time series of 
 the positions and field values (using GeoPandas and MovingPandas), 
 perform static and interactive visualizations (using MovingPandas and hvplot) 
-of the tracks of the moving objects. 
+of the tracks of moving objects. 
 In addition, participants will be able to use the knowledge gained to 
 compare data from other sources (model outputs or other satellite products).
 
 ### Target Audience:
-- Any practitioner curious of accessing NASA satellite data files, examine their content, plot fields over the satellite tracks.
+- Any practitioner curious of accessing NASA satellite data files, examine their content, plot fields over satellite tracks.
 - Anyone familiar with the Python programming language and with a basic knowledge of NumPy.
 
 ### Training platform 
@@ -89,11 +89,11 @@ You are expected to write something like:
   LastName, FirstName (my_address@domain.ext)
 ```
 
-Note that you first and last names should match the ones you used for registering to this tutorial.
+Note that your first and last names should match the ones you used for registering to this tutorial.
 
 ### Python packages
 
-The following packages will be used:
+The following Python packages will be used:
 
 - __h5py__: Reading HDF5 files
 - __Pandas__: Manipulation and exploratory data analysis of tabular data.
