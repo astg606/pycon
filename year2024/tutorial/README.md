@@ -91,9 +91,19 @@ You are expected to write something like:
 
 Note that your first and last names should match the ones you used for registering to this tutorial.
 
-### Python packages
+### Obtaining the materials
 
-The following Python packages will be used:
+After accessing the SMCE platform, click on `Terminal` on the right panel and issue the command:
+
+```shell
+   cp -r shared-data/pycon24 .
+```
+
+During the tutorial, you will receive further instructions on how to access and manipulate the Jupyter notebooks.
+
+### Python packages used
+
+The following Python packages are used:
 
 - __h5py__: Reading HDF5 files
 - __Pandas__: Manipulation and exploratory data analysis of tabular data.
