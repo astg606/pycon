@@ -23,6 +23,19 @@
 
 [Jules Kouatchou](mailto:Jules.Kouatchou@nasa.gov) • [Bruce Van Aartsen](mailto:bruce.vanaartsen@nasa.gov) • [Website](https://github.com/astg606/pycon/tree/main/year2024/tutorial)
 
+This tutorial aims to assist participants in writing Python workflows 
+to monitor the movement of a satellite or any moving planar object. 
+The goal is to extract data from its measurements, generate plots 
+along its trajectory, and evaluate the effectiveness of geophysics and 
+atmospheric models. 
+Specifically, we will concentrate on utilizing data from the 
+Ozone Monitoring Instrument (OMI) aboard the Aura satellite. 
+To accomplish this, we'll employ Python packages such as h5py and 
+MovingPandas, in conjunction with Pandas, Shapely, and GeoPandas. 
+These tools will enable us to create a straightforward workflow for 
+extracting time series data and plotting it along the path of the satellite.
+
+<!---
 The purpose of this tutorial is to help participants to write Python workflows 
 to track the movement of a satellite (or a moving object) and extract from 
 its measurements, fields that can be plot along the track and be used to assess 
@@ -31,6 +44,7 @@ Ozone Monitoring Instrument (OMI) (on board the Aura satellite) observations
 and use the Python packages h5py and MovingPandas 
 (together with Pandas, Shapely, GeoPandas) to write a simple tool extract 
 time series data and plot I along the satellite path.
+--->
 
 
 ### Tentative Schedule
@@ -53,6 +67,20 @@ time series data and plot I along the satellite path.
 
 
 ### Expected Outcomes:
+
+Upon completion of this tutorial, participants will gain access to 
+select NASA satellite data products and learn how to download them. 
+They will acquire the skills to develop basic tools for reading 
+satellite data files using libraries such as netCDF4 and h5py. 
+Furthermore, they will be equipped with the knowledge to create 
+GeoDataFrames containing time series data of positions and field values, 
+utilizing GeoPandas and MovingPandas. 
+Participants will also learn to generate both static and interactive 
+visualizations of moving object tracks, employing MovingPandas and hvplot. 
+Additionally, they will be able to apply their newfound expertise to 
+compare data from various sources, including model outputs and alternative satellite products.
+
+<!---
 After this tutorial, participants will be able to have access to some 
 of the NASA satellite data products and download them. 
 They will have pointers to write basic tools to read (using netCDF4, h5py, etc.) 
@@ -62,8 +90,10 @@ perform static and interactive visualizations (using MovingPandas and hvplot)
 of the tracks of moving objects. 
 In addition, participants will be able to use the knowledge gained to 
 compare data from other sources (model outputs or other satellite products).
+--->
 
 ### Target Audience:
+
 - Any practitioner curious of accessing NASA satellite data files, examine their content, plot fields over satellite tracks.
 - Anyone familiar with the Python programming language and with a basic knowledge of NumPy.
 
