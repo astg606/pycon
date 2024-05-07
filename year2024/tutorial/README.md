@@ -21,6 +21,7 @@
 </table>
 </div>
 
+[Jules Kouatchou](mailto:Jules.Kouatchou@nasa.gov) • [Bruce Van Aartsen](mailto:bruce.vanaartsen@nasa.gov) • [Website](https://github.com/astg606/pycon/tree/main/year2024/tutorial)
 
 The purpose of this tutorial is to help participants to write Python workflows 
 to track the movement of a satellite (or a moving object) and extract from 
