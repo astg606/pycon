@@ -80,14 +80,11 @@ The Python application we created application performs the following steps
 to obtain future ISS positions and do various data manipulations and visualizations.
 
 ```mermaid
-%%{ init: {'flowchart': { 'curve': 'stepAfter' } } }%%
-
 flowchart TB
-    %%
     A[Do web scraping to extract future ISS positions: every 4 minutes over 14 days] --> B[Convert x/y positions into latitudes/longitudes]
     B --> C[Identify orbits and time interpolate every 10 seconds on each orbit]
     C --> D[Determine country name of each location]
-    E --> F[Perform data analytics]
+    D --> F[Perform data analytics]
     F --> G[Select a random orbit: do web scraping to get weather data and visualization.]
 ```
 
