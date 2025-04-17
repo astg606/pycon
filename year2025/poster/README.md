@@ -176,6 +176,7 @@ We are also planning to introduce parallel processing and to plot the data on a 
 ## References
 - J. Kouatchou and C. Chen, _Python tool for tracking the movement of the International Space Station and identifying the weather condition along the track_, PyCon US 2024, Poster Session, Pittsburg, PA, May 19, 2024.
 - [REFERENCE GUIDE TO THE INTERNATIONAL SPACE STATION](https://www.nasa.gov/wp-content/uploads/2017/09/np-2015-05-022-jsc-iss-guide-2015-update-111015-508c.pdf?emrc=59b06a) from NASA.
+- [NASA Spot the Station](https://spotthestation.nasa.gov/)
 - [ISS National Laboratory](https://www.issnationallab.org/) from the Center for the Advancement of Science in Space.
 - [International Space Station](https://en.wikipedia.org/wiki/International_Space_Station) from Wikipedia.
 - [International Space Station](https://www.boeing.com/space/international-space-station) from Boeing.
