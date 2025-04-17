@@ -54,6 +54,7 @@ We write a standalone Python application that determines such
 future positions (over a 14-day period) and performs data analytics. 
 The tool also focuses on any individual ISS orbit to gather weather 
 conditions along ISS’ path and perform various visualizations.
+This application can complement the NASA’s Spot the station initiative and can serve as an educational tool.
 
 </p>
 
@@ -99,10 +100,21 @@ There are two main time consumming tasks:
    The operation is done one location at the time. 
    It involves not only web scraping of hourly forecasts but also time interpolation.
 
-To reduce the time used for calculations, we have an option to select
+To reduce the calculation time, we have an option to select
 a date range so that we do not have to use the entire 14-day dataset
 for time interpolation.
 
+> [!NOTE]  
+> We can even go a little further by introducing parallelism in the workflow.
+> The time interpolation is done one orbit at the time and each orbit is independent from another. We can distribute the time interpolation tasks across cores.
+> Similarly, we also distribute the gathering of weather data since we can independently process on location at the time.
+
+> [!NOTE]
+> A question that may arise is why did we select 10 seconds for time interpolation.
+> Why not 30, 20, 15, or 5 senconds for instance?
+> ISS moves very fast. The original dataset captures ISS' position every 4 minutes.
+> With such a time interval, we could not identify the most the countries overpassed.
+> We ran several experiments to determine the most appropriate resolution and to find a compromise in the computational time. With a finer resolution, we get better identification but the analysis takes longer. Our initial target was using 5 seconds but we ended up with 10 seconds to get results faster.
 
 ## Data analytics
 
@@ -157,6 +169,7 @@ The darker the color (on the path) the less likely it will be possible spot ISS 
 ## Conclusion and Future Work
 
 In this work, we wrote a Python tool that collects (over a time range) future locations of the International Space Station (ISS) together with weather data (along an arbitrary orbit). The tool determines which countries are overpassed by ISS and at which frequency. It is also capable of mapping an orbit, labeling the countries along the track and plotting weather conditions. We plan to add more features to the tool by including major cities along tracks and by building a graphical user interface to run it.
+We are also planning to introduce parallel processing and to plot the data on a sphere.
 
 
 
@@ -168,4 +181,26 @@ In this work, we wrote a Python tool that collects (over a time range) future lo
 - [International Space Station](https://www.boeing.com/space/international-space-station) from Boeing.
 - [The ECOsystem Spaceborne Thermal Radiometer Experiment](https://www.jpl.nasa.gov/missions/ecosystem-spaceborne-thermal-radiometer-experiment-on-space-station-ecostress)
 - [About SAGE III on ISS](https://sage.nasa.gov/missions/about-sage-iii-on-iss/)
+
+
+## Python packages used
+We rely on the following Python packages:
+
+- __requests__: Access a webpage and extract its content.
+- __Json__: Parse the JSON content of a webpage.
+- __BeautifulSoup__: Parse the XML content of a webpage.
+- __global-land-mask__: Determine if a given location is a land or not.
+- __reverse_geocode__: Determine the country of a location.
+- __country_converter__: Convert a country name into a country code.
+- __Pandas__: Perform data analysis.
+- __Shapely__: Create and manipulate geometry objects.
+- __GeoPandas__: Take advantage of the geospatial information for analysis and visualization.
+- __MovingPandas__:  Track ISS’ movement along an orbit.
+- __Xarray__: Perform time interpolations.
+- __Astropy__: Convert ISS positions into latitudes and longitudes.
+- __countryflag__: Obtain the emoji flag of a country.
+- __flagpy__: Obtain the flag of a country.
+- __Seaborn__: Perform static visualization.
+- __plotly__: Perform interactive visualization.
+- __hvplot__: Perform interactive visualization.
 
