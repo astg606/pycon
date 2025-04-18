@@ -122,10 +122,10 @@ After gathering the data (on future positions) for a given date range,
 we want to determine the number of ISS orbits, 
 the number of countries visited, the countries most overpassed, etc.
 
-From __April 14, 2025__ (at 12:00 pm) till __April 29, 2025__ (at 12:00 pm), ISS will:
-- Have 217 orbits.
-- Overpass 166 countries or territories.
-- Fly over Russia, the United States and China 109, 108 and 105 times, respectively.
+From __April 16, 2025__ (at 12:00 pm) till __May 1, 2025__ (at 12:00 pm), ISS will:
+- Have 218 orbits.
+- Overpass 169 countries or territories.
+- Fly over Russia, the United States and China 110, 108 and 105 times, respectively.
 
 > [!NOTE]  
 > We are using here the future tense because we are dealing here with future positions of ISS.
