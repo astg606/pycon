@@ -51,7 +51,7 @@ passes over places between latitudes 52 degrees south and
 52 degrees north at different times of the day. 
 It is possible to know the future planar position of ISS. 
 We write a standalone Python application that determines such 
-future positions (over a 14-day period) and performs data analytics. 
+future positions (over a 15-day period) and performs data analytics. 
 The tool also focuses on any individual ISS orbit to gather weather 
 conditions along ISS’ path and perform various visualizations.
 This application can complement the NASA’s Spot the station initiative and can serve as an educational tool.
@@ -82,8 +82,8 @@ to obtain future ISS positions and do various data manipulations and visualizati
 
 ```mermaid
 flowchart TB
-    A[Do web scraping to extract future ISS positions: every 4 minutes over 14 days] --> B[Convert x/y positions into latitudes/longitudes]
-    B --> C[Identify orbits and time interpolate every 10 seconds on each orbit]
+    A[Do web scraping to extract future ISS positions (ephemeris): every 4 minutes over 15 days] --> B[Convert x/y positions into latitudes/longitudes]
+    B --> C[Identify orbits and time interpolate every 5 seconds on each orbit]
     C --> D[Determine country name of each location]
     D --> F[Perform data analytics]
     F --> G[Select a random orbit: do web scraping to get weather data and visualization.]
@@ -91,30 +91,17 @@ flowchart TB
 
 It takes several minutes to perform the entire workflow.
 There are two main time consumming tasks:
-1. __Creating locations at 10-second time intervals__:
+1. __Creating locations at 5-second time intervals__:
    The original futures locations have a 4-minute interval. 
    At such a resolution, it is impossible to perform our desired analysis.
-   We time interpolate the entire dataset (over 14 days) so that the ISS
-   positions are every 10 seconds (the tool allows to set any number of seconds).
+   We time interpolate the entire dataset (over 15 days) so that the ISS
+   positions are every 5 seconds (the tool allows to set any number of seconds).
 2. __Gathering of weather forecast data along an orbit__:
    The operation is done one location at the time. 
    It involves not only web scraping of hourly forecasts but also time interpolation.
 
-To reduce the calculation time, we have an option to select
-a date range so that we do not have to use the entire 14-day dataset
-for time interpolation.
 
-> [!NOTE]  
-> We can even go a little further by introducing parallelism in the workflow.
-> The time interpolation is done one orbit at the time and each orbit is independent from another. We can distribute the time interpolation tasks across cores.
-> Similarly, we also distribute the gathering of weather data since we can independently process on location at the time.
 
-> [!NOTE]
-> A question that may arise is why did we select 10 seconds for time interpolation.
-> Why not 30, 20, 15, or 5 senconds for instance?
-> ISS moves very fast. The original dataset captures ISS' position every 4 minutes.
-> With such a time interval, we could not identify the most the countries overpassed.
-> We ran several experiments to determine the most appropriate resolution and to find a compromise in the computational time. With a finer resolution, we get better identification but the analysis takes longer. Our initial target was using 5 seconds but we ended up with 10 seconds to get results faster.
 
 ## Data analytics
 
@@ -122,13 +109,50 @@ After gathering the data (on future positions) for a given date range,
 we want to determine the number of ISS orbits, 
 the number of countries visited, the countries most overpassed, etc.
 
-From __April 16, 2025__ (at 12:00 pm) till __May 1, 2025__ (at 12:00 pm), ISS will:
+From __April 18, 2025__ (at 12:00 pm) till __May 3, 2025__ (at 12:00 pm), ISS will:
 - Have 218 orbits.
-- Overpass 169 countries or territories.
-- Fly over Russia, the United States and China 110, 108 and 105 times, respectively.
+- Overpass 174 countries or territories.
+- Fly over Russia, the United States and China 112, 108 and 105 times, respectively.
 
 > [!NOTE]  
 > We are using here the future tense because we are dealing here with future positions of ISS.
+
+A question that may arise is why did we select 5 seconds for time interpolation.
+Why not use 30, 25, 20, 15, or 10 senconds for instance?
+ISS moves very fast. The original dataset captures ISS' position every 4 minutes
+(about 5763 data points and 218 orbits for the 15-day period).
+With such a time interval, we could not identify most of the countries overpassed.
+We ran several experiments to determine how the frequency affects the 
+the identification of the countries overpassed and the computational times
+(to perform interpolations and fetching the weather data).
+We record the average number od data points per orbit, the total number of
+countries visited, the time it took to do time interpolations and the
+time spent gathering weather data as function of the frequency.
+The table below summarizes the results.
+
+| Frequency (s) | # locations/orbit | Countries overpassed | Interpolation time (s) | Gathering weather data time (s) |
+| --- | --- | --- | --- | --- |
+| 30  | 190 | 157 | 3.00 | 146.17 |
+| 25  | 229 | 159 | 3.58 | 169.19 |
+| 20  | 285 | 162 | 4.56 | 200.59 |
+| 15  | 380 | 161 | 5.38 | 279.30 |
+| 10  | 570 | 168 | 7.44 | 409.64 |
+|  5  | 1141 | 174 |13.47 | 816.96 |
+
+We observe that as we reduce the frequency, we manipulate more data points, 
+we identify more countries, and we need more time to do the operations.
+It is clear that the gathering the weather data is the most time consuming task.
+It is done one location at the time. We web scrape a remote page to extract 
+three-day forecast and perform interpolation at the desired time.
+This process was done serially. 
+Since all the locations are independent from each other, we can speed up 
+data gathering task by distributing it across cores.
+
+> [!NOTE]  
+> Before introducing parallel computations, we added an option to select
+> a date range so that we do not have to use the entire 15-day dataset.
+> This option allws us to reduce the time it takes time interpolate the orbits.
+
 
 
 ![fig_frequency](images/fig_scatterplot_frequency.png "Percentage of countries overpassed by ISS at a given frequency.")
