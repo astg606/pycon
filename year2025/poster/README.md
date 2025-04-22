@@ -6,7 +6,7 @@
     <td>
        <img src="https://portal.nccs.nasa.gov/datashare/astg/training/python/logos/nasa-logo.svg" width="90" hspace="90"> 
        <img src="https://portal.nccs.nasa.gov/datashare/astg/training/python/logos/ASTG_logo.png?raw=true" width="80" hspace="130"> 
-        <img src="https://www.nccs.nasa.gov/sites/default/files/NCCS_Logo_0.png" width="110"> 
+        <img src="https://www.nccs.nasa.gov/sites/default/files/NCCS_Logo_0.png" width="120"> 
     </td>
  </tr>
  <tr>
