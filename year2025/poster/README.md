@@ -6,7 +6,7 @@
     <td>
        <img src="https://portal.nccs.nasa.gov/datashare/astg/training/python/logos/nasa-logo.svg" width="100" hspace="90"> 
        <img src="https://portal.nccs.nasa.gov/datashare/astg/training/python/logos/ASTG_logo.png?raw=true" width="80" hspace="130"> 
-        <img src="https://www.nccs.nasa.gov/sites/default/files/NCCS_Logo_0.png" width="130"> 
+        <img src="https://www.nccs.nasa.gov/sites/default/files/NCCS_Logo_0.png" width="100"> 
     </td>
  </tr>
  <tr>
@@ -82,25 +82,57 @@ to obtain future ISS positions and do various data manipulations and visualizati
 
 ```mermaid
 flowchart TB
-    A[Do web scraping to extract future ISS positions (ephemeris): every 4 minutes over 15 days] --> B[Convert x/y positions into latitudes/longitudes]
-    B --> C[Identify orbits and time interpolate every 5 seconds on each orbit]
-    C --> D[Determine country name of each location]
+    A[Do web scraping to extract ISS ephemeris: future positions every 4 minutes over 15 days] --> B[Convert x/y positions into latitudes/longitudes]
+    B --> C[Identify orbits and do time interpolation on each orbit]
+    C --> D[Determine country name of each location and if a location is land or ocean]
     D --> F[Perform data analytics]
-    F --> G[Select a random orbit: do web scraping to get weather data and visualization.]
+    F --> G[Select a random orbit: do web scraping to get weather data and do visualization.]
 ```
 
-It takes several minutes to perform the entire workflow.
 There are two main time consumming tasks:
-1. __Creating locations at 5-second time intervals__:
+1. __Creating locations at a given time resolution__:
    The original futures locations have a 4-minute interval. 
    At such a resolution, it is impossible to perform our desired analysis.
    We time interpolate the entire dataset (over 15 days) so that the ISS
-   positions are every 5 seconds (the tool allows to set any number of seconds).
+   positions are at a specified time resolution (the tool allows to set any number of seconds).
 2. __Gathering of weather forecast data along an orbit__:
    The operation is done one location at the time. 
    It involves not only web scraping of hourly forecasts but also time interpolation.
 
 
+A question that may arise is how to determine the time resolution
+that allows us to identify as many countries as possible along ISS paths.
+ISS moves very fast. The original dataset captures ISS' position every 4 minutes
+(about 5763 data points and 218 orbits for the 15-day period).
+With such a time interval, we could not identify most of the countries overpassed.
+We ran several experiments to determine how the time resolution affects the 
+the identification of the countries overpassed and the computational times
+(to perform interpolations and fetching the weather data).
+We record the average number od data points per orbit, the total number of
+countries visited, the time it took to do time interpolations and the
+time spent gathering weather data as function of the time resolution.
+The table below summarizes the results.
+
+| Time resolution (s) | Number of locations/orbit | Countries overpassed | Interpolation time (s) | Gathering weather data time (s) |
+| --- | --- | --- | --- | --- |
+| 30  | 190 | 157 | 3.00 | 146.17 |
+| 25  | 229 | 159 | 3.58 | 169.19 |
+| 20  | 285 | 162 | 4.56 | 200.59 |
+| 15  | 380 | 161 | 5.38 | 279.30 |
+| 10  | 570 | 168 | 7.44 | 409.64 |
+|  5  | 1141 | 174 |13.47 | 816.96 |
+
+We observe that as we reduce the time resolution, we manipulate more data points, 
+we identify more countries, and we need more time to do the operations.
+It is clear that the gathering weather data is the most time consuming task.
+It is done one location at the time. We web scrape a remote page to extract 
+three-day forecast (we can go upto 7 days) and perform interpolation at the 
+desired time.
+This process was done serially. 
+Since all the locations are independent from each other, we there is a
+possibility to speed up data gathering task by distributing it across cores.
+
+For our analyses here, we decided to take five (5) seconds as time resolution.
 
 
 ## Data analytics
@@ -116,37 +148,6 @@ From __April 18, 2025__ (at 12:00 pm) till __May 3, 2025__ (at 12:00 pm), ISS wi
 
 > [!NOTE]  
 > We are using here the future tense because we are dealing here with future positions of ISS.
-
-A question that may arise is why did we select 5 seconds for time interpolation.
-Why not use 30, 25, 20, 15, or 10 senconds for instance?
-ISS moves very fast. The original dataset captures ISS' position every 4 minutes
-(about 5763 data points and 218 orbits for the 15-day period).
-With such a time interval, we could not identify most of the countries overpassed.
-We ran several experiments to determine how the frequency affects the 
-the identification of the countries overpassed and the computational times
-(to perform interpolations and fetching the weather data).
-We record the average number od data points per orbit, the total number of
-countries visited, the time it took to do time interpolations and the
-time spent gathering weather data as function of the frequency.
-The table below summarizes the results.
-
-| Frequency (s) | # locations/orbit | Countries overpassed | Interpolation time (s) | Gathering weather data time (s) |
-| --- | --- | --- | --- | --- |
-| 30  | 190 | 157 | 3.00 | 146.17 |
-| 25  | 229 | 159 | 3.58 | 169.19 |
-| 20  | 285 | 162 | 4.56 | 200.59 |
-| 15  | 380 | 161 | 5.38 | 279.30 |
-| 10  | 570 | 168 | 7.44 | 409.64 |
-|  5  | 1141 | 174 |13.47 | 816.96 |
-
-We observe that as we reduce the frequency, we manipulate more data points, 
-we identify more countries, and we need more time to do the operations.
-It is clear that the gathering the weather data is the most time consuming task.
-It is done one location at the time. We web scrape a remote page to extract 
-three-day forecast and perform interpolation at the desired time.
-This process was done serially. 
-Since all the locations are independent from each other, we can speed up 
-data gathering task by distributing it across cores.
 
 > [!NOTE]  
 > Before introducing parallel computations, we added an option to select
